@@ -33,7 +33,7 @@ const TaskList = ({
             ) : (
                 list.map((tasktodo, i) => (
                     <div key={i} className="list-card align-items-center d-flex flex-row text-center rounded mt-4 p-2"
-                        style={{ backgroundColor: tasktodo.completed ? "#ecdcf7" : "none" }}>
+                        style={{ backgroundColor: tasktodo.completed ? "#ecdcf7" : "white" }}>
 
 
                         <Form.Check
