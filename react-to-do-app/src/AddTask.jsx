@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Col, Form } from 'react-bootstrap';
 
-export default function AddTask({ list, setList }) {
+export default function AddTask({ list, setList }) {///
     const [task, setTask] = useState({
         id: Math.random().toString(36).substr(2, 9),
         tasktitle: '',
