@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import EditModal from "./EditModal";
-import DeleteTaskModal from "./DeleteTaskModal";
 import DeleteAllTasksModal from "./DeleteAllTasksModal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -17,31 +15,24 @@ const MainTodoApp = () => {
     const [deletemodalShow, setdeletemodalShow] = useState(false);
     const [deletetaskmodalShow, setdeletetaskShow] = useState(false);
     const [tasktodelete, setDeleteTask] = useState(null);
-
     const [edittask, setEditTask] = useState("");
     const [editindex, seteditIndex] = useState(-1);
-
     const [opentask, setOpenTask] = useState({
         id: "",
         tasktitle: "",
         description: ""
     });
-
-
-
     const updateStatus = (i) => {
         let newList = [...list];
         newList[i].completed = !newList[i].completed;
         setList(newList);
     }
-
     const deleteTask = (taskId) => {
         let newList = list.filter(task => task.id !== taskId);
         setList(newList);
     }
     const [editDescription, seteditDesc] = useState("");
     const [editmodalShow, seteditmodalShow] = useState(false);
-
     const handleSaveDesc = (id, title, updatedDescription) => {
         const updatedList = list.map(tasktodo =>
             tasktodo.id === id ? { ...tasktodo, task: title, description: updatedDescription } : tasktodo

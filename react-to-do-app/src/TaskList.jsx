@@ -2,7 +2,6 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
 import DeleteTaskModal from "./DeleteTaskModal";
-import EditModal from "./EditModal";
 import { ViewList, Pencil, Trash2Fill } from 'react-bootstrap-icons';
 
 
@@ -15,13 +14,7 @@ const TaskList = ({
     handleNewTask,
     cancelEdit,
     updateStatus,
-    openDesc,
     handleConf,
-    editmodalShow,
-    seteditmodalShow,
-    opentask,
-    setOpenTask,
-    handleSaveDesc,
     deletetaskmodalShow,
     setdeletetaskShow,
     handleDeleteTask
@@ -34,16 +27,12 @@ const TaskList = ({
                 list.map((tasktodo, i) => (
                     <div key={i} className="list-card align-items-center d-flex flex-row text-center rounded mt-4 p-2"
                         style={{ backgroundColor: tasktodo.completed ? "#ecdcf7" : "white" }}>
-
-
                         <Form.Check
                             type="checkbox"
                             checked={tasktodo.completed}
                             onChange={() => updateStatus(i)}
                             className="checkbox me-3"
                         />
-
-
                         <div className="col task-title" style={{ textDecoration: tasktodo.completed ? 'line-through' : 'none' }}>
                             {editindex === i ? (
                                 <Form onSubmit={(e) => {
@@ -74,11 +63,7 @@ const TaskList = ({
                                 <div className='text-start'> {tasktodo.tasktitle} </div>
                             )}
                         </div>
-
-
                         <div className="col">{new Date(tasktodo.date).toLocaleString()}</div>
-
-
                         <div className="mini-options-wrap col row ">
                             {editindex === i ? (
                                 <>
@@ -86,21 +71,11 @@ const TaskList = ({
                                 </>
                             ) : (
                                 <>
-
                                     <div className="mini-option edittask col-1" onClick={() => onEdit(i)}><Pencil /></div>
                                     <div className="mini-option deletetask col-1" onClick={() => handleConf(tasktodo.id)}><Trash2Fill /></div>
                                 </>
                             )}
                         </div>
-
-
-                        <EditModal
-                            modalShow={editmodalShow}
-                            modalClose={() => seteditmodalShow(false)}
-                            task={opentask}
-                            onEditDescription={(description) => setOpenTask({ ...opentask, description })}
-                            handleSaveDesc={handleSaveDesc}
-                        />
 
                         <DeleteTaskModal
                             modalShow={deletetaskmodalShow}

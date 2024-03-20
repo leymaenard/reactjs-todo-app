@@ -58,7 +58,7 @@ body {
 .lexmeet-title {
     font-weight: bold;
     color: white;
-    letter-spacing: 3px;
+    letter-spacing: 0.099rem;
     margin-bottom: 0;
 
 }
@@ -177,7 +177,7 @@ body {
 
 .task-title {
     max-width: 30%;
-    overflow: hidden;
+    overflow: auto;
 }
 
 
