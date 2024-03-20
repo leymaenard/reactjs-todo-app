@@ -27,21 +27,6 @@ const MainTodoApp = () => {
         description: ""
     });
 
-    const getList = () => {
-        let list = localStorage.getItem("list");
-        let listData = JSON.parse(list);
-        if (listData) {
-            return listData;
-        }
-        return [];
-    }
-
-    const [list, setList] = useState(getList());
-
-    useEffect(() => {
-        localStorage.setItem("list", JSON.stringify(list));
-    }, [list]);
-
 
 
     const updateStatus = (i) => {
@@ -130,6 +115,21 @@ const MainTodoApp = () => {
         seteditmodalShow(true);
     }
 
+    const getList = () => {
+        let list = localStorage.getItem("list");
+        let listData = JSON.parse(list);
+        if (listData) {
+            return listData;
+        }
+        return [];
+    }
+
+    const [list, setList] = useState(getList());
+
+    useEffect(() => {
+        localStorage.setItem("list", JSON.stringify(list));
+    }, [list]);
+
     return (
         <div className="main-container m-5">
             <div className="main-wrap pb-1">
@@ -179,9 +179,10 @@ const MainTodoApp = () => {
                     />
                 </div>
 
-                <div className="table-wrap mb-5 ms-5 me-5">
+                <div className="table-wrap mb-5 ms-2 me-2">
                     <div className="table-labels-wrap">
                         <div className="text-center row fw-bold">
+                            {/* <div className="col"></div> */}
                             <div className="col">TASKS</div>
                             <div className="col">DATE ADDED</div>
                             <div className="col">OPTIONS</div>
