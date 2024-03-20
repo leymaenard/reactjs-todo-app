@@ -174,7 +174,7 @@ const MainTodoApp = () => {
 
                     <DeleteAllTasksModal
                         modalShow={deletemodalShow}
-                        onClose={() => setdeletemodalShow(false)}
+                        modalClose={() => setdeletemodalShow(false)}
                         onDeleteAll={handleDeleteAllTasks}
                     />
                 </div>
