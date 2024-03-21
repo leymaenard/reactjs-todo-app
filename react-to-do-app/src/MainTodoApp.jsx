@@ -20,7 +20,6 @@ const MainTodoApp = () => {
     const [opentask, setOpenTask] = useState({
         id: "",
         tasktitle: "",
-        description: ""
     });
     const updateStatus = (i) => {
         let newList = [...list];
@@ -30,15 +29,6 @@ const MainTodoApp = () => {
     const deleteTask = (taskId) => {
         let newList = list.filter(task => task.id !== taskId);
         setList(newList);
-    }
-    const [editDescription, seteditDesc] = useState("");
-    const [editmodalShow, seteditmodalShow] = useState(false);
-    const handleSaveDesc = (id, title, updatedDescription) => {
-        const updatedList = list.map(tasktodo =>
-            tasktodo.id === id ? { ...tasktodo, task: title, description: updatedDescription } : tasktodo
-        );
-        setList(updatedList);
-        seteditmodalShow(false);
     }
 
     const handleRemoveAll = () => {
@@ -81,30 +71,21 @@ const MainTodoApp = () => {
     const onEdit = (i) => {
         seteditIndex(i);
         setEditTask(list[i].tasktitle);
-        seteditDesc(list[i].description);
     }
 
     const handleNewTask = (i) => {
         let newList = [...list];
         newList[i].tasktitle = edittask;
-        newList[i].description = editDescription;
         setList(newList);
         seteditIndex(-1);
         setEditTask("");
-        seteditDesc("");
     }
 
     const cancelEdit = () => {
         seteditIndex(-1);
         setEditTask("");
-        seteditDesc("");
     }
 
-    const openDesc = (i) => {
-        const taskToView = list[i];
-        setOpenTask({ id: taskToView.id, tasktitle: taskToView.tasktitle, description: taskToView.description });
-        seteditmodalShow(true);
-    }
 
     const getList = () => {
         let list = localStorage.getItem("list");
@@ -193,13 +174,9 @@ const MainTodoApp = () => {
                             handleNewTask={handleNewTask}
                             cancelEdit={cancelEdit}
                             updateStatus={updateStatus}
-                            openDesc={openDesc}
                             handleConf={handleConf}
-                            editmodalShow={editmodalShow}
-                            seteditmodalShow={seteditmodalShow}
                             opentask={opentask}
                             setOpenTask={setOpenTask}
-                            handleSaveDesc={handleSaveDesc}
                             handleDeleteTask={handleDeleteTask}
                             deletetaskmodalShow={deletetaskmodalShow}
                             setdeletetaskShow={setdeletetaskShow}

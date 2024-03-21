@@ -5,7 +5,6 @@ export default function AddTask({ list, setList }) {///
     const [task, setTask] = useState({
         id: Math.random().toString(36).substr(2, 9),
         tasktitle: '',
-        description: '',
         date: new Date(),
         ddate: null,
         time: null,
@@ -17,7 +16,6 @@ export default function AddTask({ list, setList }) {///
         const newTask = {
             id: Math.random().toString(36).substr(2, 9),
             tasktitle: task.tasktitle,
-            description: task.description,
             date: task.date,
             ddate: task.ddate,
             time: task.time,
@@ -27,7 +25,6 @@ export default function AddTask({ list, setList }) {///
         setTask({
             id: Math.random().toString(36).substr(2, 9),
             tasktitle: "",
-            description: "",
             date: new Date(),
             ddate: null,
             time: null,
