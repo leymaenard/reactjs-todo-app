@@ -227,9 +227,17 @@ body {
 .form-check-input {
     height: 1.5rem;
     width: 1.5rem;
-    color: #F4512C;
     margin-bottom: 3px;
 }
+
+.form-check-input:checked {
+    accent-color: #cf4222;
+    background-color: #cf4222;
+    border: none;
+}
+
+
+
 
 .main-options-wrap {
     border-radius: 5px;

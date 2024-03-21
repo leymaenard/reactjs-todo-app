@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import DeleteAllTasksModal from "./DeleteAllTasksModal";
+import DeleteAllTasksModal from "./components/DeleteAllTasksModal.jsx";
+import DeleteCompleteModal from "./components/DeleteCompleteModal.jsx.jsx";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import AddTask from "./AddTask";
-import TaskList from "./TaskList";
+import AddTask from "./components/AddTask.jsx";
+import TaskList from "./components/TaskList.jsx";
 import Logo from "/logo/lexmeet.png";
 import Img from "/logo/stockbanner.jpg";
 
@@ -14,6 +15,7 @@ const MainTodoApp = () => {
 
     const [deletemodalShow, setdeletemodalShow] = useState(false);
     const [deletetaskmodalShow, setdeletetaskShow] = useState(false);
+    const [deletecomModal, setdeletecomModal] = useState(false);
     const [tasktodelete, setDeleteTask] = useState(null);
     const [edittask, setEditTask] = useState("");
     const [editindex, seteditIndex] = useState(-1);
@@ -29,6 +31,10 @@ const MainTodoApp = () => {
     const deleteTask = (taskId) => {
         let newList = list.filter(task => task.id !== taskId);
         setList(newList);
+    }
+
+    const handleDelCom = () => {
+        setdeletecomModal(true);
     }
 
     const handleRemoveAll = () => {
@@ -56,6 +62,7 @@ const MainTodoApp = () => {
     const removeAllDone = () => {
         const updatedList = list.filter(tasktodo => !tasktodo.completed);
         setList(updatedList);
+        setdeletecomModal(false);
     }
 
     const handleConf = (taskId) => {
@@ -138,8 +145,14 @@ const MainTodoApp = () => {
                         <p className='option-button' onClick={markUndone} >All Incomplete</p>
                     </div>
                     <div className="button-wrap col">
-                        <p className='option-button' onClick={removeAllDone} >Delete Complete</p>
+                        <p className='option-button' onClick={handleDelCom} >Delete Complete</p>
                     </div>
+                    <DeleteCompleteModal
+                        modalShow={deletecomModal}
+                        modalClose={() => setdeletecomModal(false)}
+                        onDeleteCom={removeAllDone}
+                    />
+
                     <div className="button-wrap col">
                         <p className='option-button' onClick={handleRemoveAll} >Clear All</p>
                     </div>
