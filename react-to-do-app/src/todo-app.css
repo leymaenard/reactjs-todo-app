@@ -50,7 +50,7 @@
 body {
     height: 100vh;
     font-family: 'DM Sans';
-    color: #7b3ea4;
+    color: rgb(72, 72, 72);
 
 
 }
@@ -231,8 +231,8 @@ body {
 }
 
 .form-check-input:checked {
-    accent-color: #cf4222;
-    background-color: #cf4222;
+    accent-color: #F4512C;
+    background-color: #F4512C;
     border: none;
 }
 
@@ -243,10 +243,10 @@ body {
     border-radius: 5px;
     background: rgb(242, 242, 242);
     align-items: center;
-    margin-left: auto;
-    margin-right: 3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
     justify-content: center;
-    max-width: 50%;
+
 
     /* gap: 0.5rem; */
 
